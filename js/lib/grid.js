@@ -1,9 +1,10 @@
 'use strict'
 
-class Grid {
-  constructor(rows, cols) {
+class World {
+  constructor(rows, cols, lifeThreshold) {
     this.rows = rows
     this.cols = cols
+    this.lifeThreshold = lifeThreshold
 
     this._initGrid()
     this._initCells()
@@ -28,6 +29,12 @@ class Grid {
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {
         const cell = this.grid[r][c]
+
+        const rand = Math.random()
+        let state = 0
+        if (rand >= this.lifeThreshold) state = 3
+
+        cell.state = state
 
         cell.northWest = this.grid[this._calcRow(r - 1)][this._calcCol(c - 1)]
         cell.north = this.grid[this._calcRow(r - 1)][c]
