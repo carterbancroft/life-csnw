@@ -1,49 +1,52 @@
 'use strict'
 
-let world
+const cellSize = 10
+const padding = 1
+const rows = 50
+const cols = 100
+const lifeThreshold = 0.92
+
+const world = new World(rows, cols, lifeThreshold)
+
 const canvas = document.getElementById('canvas')
+const width = (rows * cellSize) + (rows * padding)
+const height = (cols * cellSize) + (cols * padding)
 
-const cellStates = {
-  dead: 0,
-  dying: 1,
-  beingBorn: 2,
-  alive: 3,
-}
+canvas.width = width
+canvas.height = height
 
-function initializeWorld() {
-  const cellSize = 10
-  const padding = 1
-  const rows = 50
-  const cols = 50
-
-  world = new World(rows, cols, 0.90)
-
-  const width = (rows * cellSize) + (rows * padding)
-  const height = (cols * cellSize) + (cols * padding)
-
-  const two = new Two({width, height}).appendTo(canvas)
+function drawWorld() {
+  const context = canvas.getContext('2d')
+  context.clearRect(0, 0, width, height)
 
   let yPos = cellSize / 2
   for (let r = 0; r < world.rows; r++) {
     let xPos = cellSize / 2
+
     for (let c = 0; c < world.cols; c++) {
-      const rect = two.makeRectangle(xPos, yPos, cellSize, cellSize)
       const cell = world.grid[r][c]
+
       if (cell.state === cellStates.dead) {
-        rect.fill = 'red'
+        context.fillStyle = "#FF0000"
       }
       else {
-        rect.fill = 'blue'
+        context.fillStyle = "#0000FF"
       }
 
-      rect.noStroke()
+      context.fillRect(xPos, yPos, cellSize, cellSize)
       xPos += cellSize + 1
     }
 
     yPos += cellSize + 1
   }
-
-  two.update()
 }
 
-initializeWorld()
+let i = 0
+setInterval(() => {
+  console.log(`generation: ${i}`)
+
+  world.update()
+  drawWorld()
+
+  i++
+}, 200)

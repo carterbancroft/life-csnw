@@ -6,35 +6,25 @@ class World {
     this.cols = cols
     this.lifeThreshold = lifeThreshold
 
-    this._initGrid()
-    this._initCells()
-  }
-
-  _initGrid() {
     // Initialize the grid to have rows x cols null cells
     const _grid = []
     for (let r = 0; r < this.rows; r++) {
       const row = []
       for (let c = 0; c < this.cols; c++) {
-        row[c] = new Cell(r, c)
+        row[c] = new Cell(r, c, this.lifeThreshold)
       }
-
       _grid.push(row)
     }
 
     this.grid = _grid
+
+    this._initCells()
   }
 
   _initCells() {
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {
         const cell = this.grid[r][c]
-
-        const rand = Math.random()
-        let state = 0
-        if (rand >= this.lifeThreshold) state = 3
-
-        cell.state = state
 
         cell.northWest = this.grid[this._calcRow(r - 1)][this._calcCol(c - 1)]
         cell.north = this.grid[this._calcRow(r - 1)][c]
@@ -46,6 +36,28 @@ class World {
         cell.southWest = this.grid[this._calcRow(r + 1)][this._calcCol(c - 1)]
         cell.south = this.grid[this._calcRow(r + 1)][c]
         cell.southEast = this.grid[this._calcRow(r + 1)][this._calcCol(c + 1)]
+      }
+    }
+  }
+
+  update() {
+    for (let r = 0; r < this.rows; r++) {
+      for (let c = 0; c < this.cols; c++) {
+        const cell = this.grid[r][c]
+        cell.updateState()
+      }
+    }
+
+    for (let r = 0; r < this.rows; r++) {
+      for (let c = 0; c < this.cols; c++) {
+        const cell = this.grid[r][c]
+        cell.updateState()
+        if (cell.state === cellStates.dying) {
+          cell.state = cellStates.dead // kill it
+        }
+        else if (cell.state === cellStates.beingBorn) {
+          cell.state = cellStates.alive // bring it to life
+        }
       }
     }
   }
