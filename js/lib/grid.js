@@ -63,6 +63,3 @@ class Grid {
     return col
   }
 }
-
-//const grid = new Grid(5, 5)
-//console.log(grid.grid)
