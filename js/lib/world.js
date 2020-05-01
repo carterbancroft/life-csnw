@@ -73,7 +73,7 @@ class World {
    * Handles updating all the cells within the world based on the rules of Life.
    */
   update() {
-    // First we loop over the world and applie all the rules by calling each
+    // First we loop over the world and apply all the rules by calling each
     // cell's `updateState()` method.
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {
