@@ -5,6 +5,9 @@
 <head>
   <title>Game Of Life</title>
   <meta charset="UTF-8">
+
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+
   <script src="./js/lib/cellStates.js" defer></script>
   <script src="./js/lib/cell.js" defer></script>
   <script src="./js/lib/world.js" defer></script>
@@ -12,7 +15,14 @@
 </head>
 
 <body>
-  <canvas id="canvas" style="border: 1px solid gray;" />
+  <div id="controls">
+    <button id="playButton" onclick="togglePlay()" />Play</button>
+    <p id="generation">Generation: 0</p>
+  </div>
+
+  <div id="canvas-container">
+    <canvas id="canvas" />
+  </div>
 </body>
 
 </html>

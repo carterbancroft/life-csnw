@@ -1,0 +1,21 @@
+#canvas-container {
+   width: 100%;
+   text-align: center;
+}
+
+#canvas {
+  display: inline;
+  border: 1px solid gray;
+}
+
+#controls {
+  width: 100%;
+  margin: 10px;
+  text-align: center;
+}
+
+#playButton {
+  text-align: center;
+  padding: 5px 25px 5px 25px;
+  font-size: 1.2em;
+}

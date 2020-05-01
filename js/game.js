@@ -1,10 +1,14 @@
 'use strict'
 
-const cellSize = 3
+let gameLoop
+let playing = false
+let currentGeneration = 0
+
+const cellSize = 5
 const padding = 1
-const rows = 200
-const cols = 350
-const lifeThreshold = 0.85
+const rows = 110
+const cols = 220
+const lifeThreshold = 0.90
 
 const world = new World(rows, cols, lifeThreshold)
 
@@ -27,10 +31,10 @@ function drawWorld() {
       const cell = world.grid[r][c]
 
       if (cell.state === cellStates.dead) {
-        context.fillStyle = "#ffffff"
+        context.fillStyle = '#eeeeee'
       }
       else {
-        context.fillStyle = "#0000ff"
+        context.fillStyle = '#0000ff'
       }
 
       context.fillRect(xPos, yPos, cellSize, cellSize)
@@ -41,12 +45,26 @@ function drawWorld() {
   }
 }
 
+function togglePlay() {
+  const button = document.getElementById('playButton')
+  const generation = document.getElementById('generation')
+
+  if (!playing) {
+    button.innerText = 'Pause'
+    gameLoop = setInterval(() => {
+      world.update()
+      drawWorld()
+
+      currentGeneration++
+      generation.innerText = `Generation: ${currentGeneration}`
+    }, 100)
+  }
+  else {
+    button.innerText = 'Play'
+    clearInterval(gameLoop)
+  }
+
+  playing = !playing
+}
+
 drawWorld()
-
-let i = 0
-setInterval(() => {
-  world.update()
-  drawWorld()
-
-  i++
-}, 100)
