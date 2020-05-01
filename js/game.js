@@ -49,6 +49,12 @@ canvas.height = height
 
 /**
  * Handles rendering the world into an HTML canvas.
+ *
+ * Note: I struggled a bit with whether this should go into the World class or
+ * if it should be here. Ultimately I decided the rendering should be separate
+ * from the world object itself. This way, in theory, you could shim the World
+ * clas under any JS rendering framework and it should work as long as you get
+ * the draw function set up right.
  */
 function drawWorld() {
   const context = canvas.getContext('2d')

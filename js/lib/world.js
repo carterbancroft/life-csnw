@@ -106,7 +106,7 @@ class World {
    * Basically these make the world spherical, where left and right edges of the
    * world connect as do the top and bottom.
    *
-   * An interesting problem might be to make the world toroidal instead of
+   * Note: An interesting problem might be to make the world toroidal instead of
    * spherical.
    */
   _calcRow(row) {
