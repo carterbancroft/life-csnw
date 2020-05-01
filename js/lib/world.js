@@ -51,7 +51,6 @@ class World {
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {
         const cell = this.grid[r][c]
-        cell.updateState()
         if (cell.state === cellStates.dying) {
           cell.state = cellStates.dead // kill it
         }

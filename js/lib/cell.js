@@ -45,12 +45,18 @@ class Cell {
     })
 
     let newState = this.state
+
+    // If the current cell is alive...
     if (livingStates.includes(newState)) {
+      // If the current cell has either 2 or 3 living neighbors, it survives.
       if (liveNeighbors < 2) newState = cellStates.dying
       else if (liveNeighbors > 3) newState = cellStates.dying
     }
+    // Else if the current cell is dead...
     else {
+      // If the current cell has 3 living neighbors it becomes living.
       if (liveNeighbors === 3) newState = cellStates.beingBorn
+      // Otherwise the current cell stays dead.
     }
 
     this.state = newState

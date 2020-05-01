@@ -4,7 +4,7 @@ const cellSize = 3
 const padding = 1
 const rows = 200
 const cols = 350
-const lifeThreshold = 0.93
+const lifeThreshold = 0.85
 
 const world = new World(rows, cols, lifeThreshold)
 
@@ -40,6 +40,8 @@ function drawWorld() {
     yPos += cellSize + padding
   }
 }
+
+drawWorld()
 
 let i = 0
 setInterval(() => {
