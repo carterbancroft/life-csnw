@@ -1,9 +1,20 @@
 'use strict'
 
+/**
+ * The Cell object defines a single instance of a cell within the World.
+ *
+ * Cells have a position in the world (their row/col) and a state (whether they
+ * are alive or dead or the intermediate states of dying and being born).
+ *
+ * Cells also keep track of all of their neighbors. Knowing the neighbors of a
+ * given cell is necessary to apply the rules during each game tick.
+ */
 class Cell {
-  constructor(row, col, lifeThreshold) {
+  constructor(row, col, state) {
     this.row = row
     this.col = col
+
+    this.state = state
 
     this.northWest = null
     this.north = null
@@ -15,14 +26,11 @@ class Cell {
     this.southWest = null
     this.south = null
     this.southEast = null
-
-    const rand = Math.random()
-    const state = rand >= lifeThreshold ?
-      cellStates.alive : cellStates.dead
-
-    this.state = state
   }
 
+  /**
+   * A getter function to return all of a cells neighbors.
+   */
   get neighbors() {
     return [
       this.northWest,
@@ -36,9 +44,14 @@ class Cell {
     ]
   }
 
+  /**
+   * Handles updating a cells state based on the state of it's neighbors. This
+   * is where the rules of Life are ultimately applied.
+   */
   updateState() {
     const livingStates = [cellStates.dying, cellStates.alive]
 
+    // First figure out how many neighbors this cell has that are alive...
     let liveNeighbors = 0
     this.neighbors.forEach(n => {
       if (livingStates.includes(n.state)) liveNeighbors += 1
