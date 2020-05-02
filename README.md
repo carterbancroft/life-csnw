@@ -15,7 +15,7 @@ things going.
 ## Requirements
 An updated version of Firefox or Chrome.
 
-This does not appear to work in the latest version of Safari. Internet Explore,
+This does not appear to work in the latest version of Safari. Internet Explorer,
 I have no idea. Lemme know if you find out.
 
 ## Running the game
