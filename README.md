@@ -4,20 +4,19 @@ An implementation of Life using pure JS and an HTML5 canvas.
 For more details on Life check out this
 [wikipedia page](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).
 
-## Implementation Details
-In my implementation, edges are not ignored or treated as a dead state so cells
-will wrap to opposite sides when they go off the edge. Just like those old video
-games you know and love.
-
-Secondly, the world is seeded on page load with a certain amount of life to get
-things going.
+## Implementation details
+- Edges are neither ignored nor treated as a `dead` state. This means cells will
+wrap to opposite sides of the world when they go off the edge. Just like those
+old video games you know and love.
+- The world is seeded on page load with a random amount of life to get things
+going.
 
 ## Requirements
 A ding-dang browser. Modern and updated.
 
 I haven't tested in IE but Firefox, Chrome or Safari should do the trick.
 
-## Running the game
+## Running it
 Double click `index.html` to open it in your browser of choice and click that
 big ol' Play button.
 
@@ -34,9 +33,10 @@ The key variables to play with are:
 - `cellSize` (int) - Cells are squares, this adjusts the height/width of all
 cells.
 - `rows` and `cols` (int) - Defines the number of rows and columns in the world.
+The world does not need to be square.
 - `lifeThreshold` (float) - Value between 0 and 1 that defines how likely it is
-for a given cell to be alive upon world generation. The less likely a cell will
-be alive.
+for a given cell to be alive upon world generation. The higher the number, the
+less likely a given cell will be alive.
 - `loopSpeedMs` (int) - Defines how much time elapses per generation. The higher
 the number the more time you can give yourself to look at the current
 generation.
