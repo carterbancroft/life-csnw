@@ -33,8 +33,8 @@ const deadCellColor = '#333333'
 // other words the lenght of a single game tick.
 const loopSpeedMs = 100
 
-// The World object, which at it's core is essentially a 2D array representation
-// of cells to be rendered.
+// The World object, which at it's core is just a 2D array representation of
+// cells to be rendered.
 const world = new World(rows, cols, lifeThreshold)
 
 const canvas = document.getElementById('canvas')
@@ -53,11 +53,12 @@ canvas.height = height
  * Note: I struggled a bit with whether this should go into the World class or
  * if it should be here. Ultimately I decided the rendering should be separate
  * from the world object itself. This way, in theory, you could shim the World
- * clas under any JS rendering framework and it should work as long as you get
+ * class under any JS rendering framework and it should work as long as you get
  * the draw function set up right.
  */
 function drawWorld() {
   const context = canvas.getContext('2d')
+  // Clear the entire canvas on each draw
   context.clearRect(0, 0, width, height)
 
   let yPos = 0
@@ -67,6 +68,7 @@ function drawWorld() {
     for (let c = 0; c < world.cols; c++) {
       const cell = world.grid[r][c]
 
+      // Depending on the state of a cell, set it's color.
       if (cell.state === cellStates.dead) {
         context.fillStyle = deadCellColor
       }
@@ -74,7 +76,11 @@ function drawWorld() {
         context.fillStyle = aliveCellColor
       }
 
+      // Draw that sucker.
       context.fillRect(xPos, yPos, cellSize, cellSize)
+
+      // Both X and Y positions need to be calculated and kept track of using
+      // the cellSize and padding values.
       xPos += cellSize + padding
     }
 
@@ -86,6 +92,8 @@ function drawWorld() {
  * Handles running the game loop, which updates the World array based on the
  * rules of Life and then drawing the updated world. Also tracks the current
  * Generation.
+ *
+ * The loop is a simple js setInterval.
  */
 function play() {
   const generation = document.getElementById('generation')

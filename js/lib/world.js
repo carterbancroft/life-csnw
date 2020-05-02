@@ -10,11 +10,18 @@
  * likely it is for a given cell to be alive or dead upon world creation.
  */
 class World {
+  // Class variables
+  grid
+  rows
+  cols
+  lifeThreshold
+
   constructor(rows, cols, lifeThreshold) {
     this.rows = rows
     this.cols = cols
+    this.lifeThreshold = lifeThreshold
 
-    this._initWorld(lifeThreshold)
+    this._initWorld()
     this._initCells()
   }
 
@@ -22,10 +29,10 @@ class World {
    * Handles initializing the world by creating the grid with all of it's cells.
    * The world grid is just a 2D array of Cell objects.
    *
-   * Cells we be initialized with either an alive or dead state dependent upon
+   * Cells will be initialized with either an alive or dead state dependent upon
    * the `lifeThreshold` var.
    */
-  _initWorld(lifeThreshold) {
+  _initWorld() {
     const _grid = []
     for (let r = 0; r < this.rows; r++) {
       const row = []
@@ -33,7 +40,8 @@ class World {
         // Using the lifeThreshold value and rand we determine here whether the
         // cell we're creating is going to be alive or dead initially.
         const rand = Math.random()
-        const state = rand >= lifeThreshold ? cellStates.alive : cellStates.dead
+        const state = rand >= this.lifeThreshold ?
+          cellStates.alive : cellStates.dead
 
         row[c] = new Cell(r, c, state)
       }

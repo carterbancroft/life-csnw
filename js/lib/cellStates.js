@@ -12,7 +12,7 @@
  */
 const cellStates = {
   dead: 0,
-  alive: 3,
   dying: 1,
   beingBorn: 2,
+  alive: 3,
 }

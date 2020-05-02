@@ -10,22 +10,27 @@
  * given cell is necessary to apply the rules during each game tick.
  */
 class Cell {
+  // Class variables
+  row
+  col
+  state
+
+  // These define the neighbor of this cell instance. The World object handles
+  // setting these.
+  northWest = null
+  north = null
+  northEast = null
+  west = null
+  east = null
+  southWest = null
+  south = null
+  southEast = null
+
   constructor(row, col, state) {
     this.row = row
     this.col = col
 
     this.state = state
-
-    this.northWest = null
-    this.north = null
-    this.northEast = null
-
-    this.west = null
-    this.east = null
-
-    this.southWest = null
-    this.south = null
-    this.southEast = null
   }
 
   /**

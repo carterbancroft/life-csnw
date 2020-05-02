@@ -1,12 +1,18 @@
 # Conway's Game Of Life
-
 An implementation of Life using pure JS and an HTML5 canvas.
 
 For more details on Life check out this
 [wikipedia page](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).
 
+## Implementation Details
+In my implementation, edges are not ignored or treated as a dead state so cells
+will wrap to opposite sides when they go off the edge.
+
+Secondly, the world is seeded on page load with a certain amount of life to get
+things going.
+
 ## Requirements
-A ding-dang browser. Preferably a modern one.
+A ding-dang browser that can run JavaScript. Preferably a modern/updated one.
 
 ## Running the game
 Double click `index.html` to open it in your browser of choice and click that
