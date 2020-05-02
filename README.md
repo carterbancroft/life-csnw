@@ -13,10 +13,9 @@ Secondly, the world is seeded on page load with a certain amount of life to get
 things going.
 
 ## Requirements
-An updated version of Firefox or Chrome.
+A ding-dang browser. Modern and updated.
 
-This does not appear to work in the latest version of Safari. Internet Explorer,
-I have no idea. Lemme know if you find out.
+I haven't tested in IE but Firefox, Chrome or Safari should do the trick.
 
 ## Running the game
 Double click `index.html` to open it in your browser of choice and click that

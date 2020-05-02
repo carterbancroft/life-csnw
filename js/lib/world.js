@@ -10,12 +10,6 @@
  * likely it is for a given cell to be alive or dead upon world creation.
  */
 class World {
-  // Class variables
-  grid
-  rows
-  cols
-  lifeThreshold
-
   constructor(rows, cols, lifeThreshold) {
     this.rows = rows
     this.cols = cols
