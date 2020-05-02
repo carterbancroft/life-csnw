@@ -22,7 +22,7 @@ Double click `index.html` to open it in your browser of choice and click that
 big ol' Play button.
 
 Play can be stopped or started by the same button. The current generation is
-real-time within the UI.
+displayed real-time within the UI.
 
 ## Tweaking it
 In [game.js](https://github.com/carterbancroft/life-csnw/blob/master/js/game.js#L12-L34)
@@ -55,5 +55,9 @@ would start to look like mountain ranges and would never fully engulf the world.
 
 Pretty neat, no idea what the actual cause of that bug was other than me
 running the rules of the game one too many times each generation.
+
+Enjoy!
+
+---
 
 ![](screenshots/game.png)
