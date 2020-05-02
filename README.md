@@ -6,7 +6,8 @@ For more details on Life check out this
 
 ## Implementation Details
 In my implementation, edges are not ignored or treated as a dead state so cells
-will wrap to opposite sides when they go off the edge.
+will wrap to opposite sides when they go off the edge. Just like those old video
+games you know and love.
 
 Secondly, the world is seeded on page load with a certain amount of life to get
 things going.
@@ -45,7 +46,6 @@ generation.
 - The ability to draw a starting state instead of having it be random.
 - Having a slider that could be used on game pause to rewind/replay the current
 game.
-- Making the world toroidal instead of spherical.
 - A UI to update things like game speed and the size of the world.
 
 ## Happy accidents

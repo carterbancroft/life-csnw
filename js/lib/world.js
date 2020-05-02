@@ -111,11 +111,8 @@ class World {
    * Helper to calculate an appropriate row value in the case of a value
    * being outside of the bounds of the world.
    *
-   * Basically these make the world spherical, where left and right edges of the
-   * world connect as do the top and bottom.
-   *
-   * Note: An interesting problem might be to make the world toroidal instead of
-   * spherical.
+   * Basically these make the world like video games of yore where when you
+   * cross an edge you teleport to the other.
    */
   _calcRow(row) {
     // If a row value is negative (off the top of the world), return the last
