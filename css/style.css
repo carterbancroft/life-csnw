@@ -21,6 +21,7 @@ body {
 }
 
 #playButton {
+  margin-top: 15px;
   text-align: center;
   padding: 5px 25px 5px 25px;
   font-size: 1.2em;
