@@ -120,7 +120,10 @@ document.addEventListener('keyup', e => {
   }
   else if (e.keyCode === 67) {
     const c = ['#f242f5', '#36ff6b', '#36f5ff', '#ffc936', '#ff5b36']
-    const r = c[Math.floor(Math.random() * c.length)]
+    let r = aliveCellColor
+    while (r === aliveCellColor) {
+      r = c[Math.floor(Math.random() * c.length)]
+    }
     aliveCellColor = r
   }
 })
