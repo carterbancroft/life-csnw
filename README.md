@@ -60,4 +60,4 @@ Enjoy!
 
 ---
 
-![](screenshots/game.png)
+![](assets/game.png)

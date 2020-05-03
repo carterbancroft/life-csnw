@@ -26,7 +26,7 @@ const cols = 220
 // of it like "85% of cells will start dead".
 const lifeThreshold = 0.85
 // Modify these to modify the colors of the cells in the browser.
-const aliveCellColor = '#f242f5'
+let aliveCellColor = '#f242f5'
 const deadCellColor = '#333333'
 // The amount of time (in milliseconds) that a single generation gets to exist
 // before the rules are applied and the next generation bursts into being. In
@@ -105,6 +105,25 @@ function play() {
     generation.innerText = `Generation: ${currentGeneration}`
   }, loopSpeedMs)
 }
+
+// egg
+let p = false
+document.addEventListener('keyup', e => {
+  if (e.keyCode === 32) {
+    console.log('toggling')
+    togglePlay()
+  }
+  else if (e.keyCode === 66) {
+    const l = document.getElementById('l')
+    p ? l.pause() : l.play()
+    p = !p
+  }
+  else if (e.keyCode === 67) {
+    const c = ['#f242f5', '#36ff6b', '#36f5ff', '#ffc936', '#ff5b36']
+    const r = c[Math.floor(Math.random() * c.length)]
+    aliveCellColor = r
+  }
+})
 
 /**
  * Handles stopping and starting the game. Basically updates the UI
