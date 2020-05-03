@@ -110,7 +110,6 @@ function play() {
 let p = false
 document.addEventListener('keyup', e => {
   if (e.keyCode === 32) {
-    console.log('toggling')
     togglePlay()
   }
   else if (e.keyCode === 66) {
